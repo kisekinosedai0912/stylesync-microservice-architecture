@@ -27,10 +27,6 @@
     }
   },
   "devDependencies": {
-    "@org/models": "workspace:*",
-    "@org/shop-data": "workspace:*",
-    "@org/shop-feature-product-detail": "workspace:*",
-    "@org/shop-feature-products": "workspace:*",
-    "@org/shop-shared-ui": "workspace:*"
+    "@org/models": "workspace:*"
   }
 }

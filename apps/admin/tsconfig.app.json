@@ -23,8 +23,5 @@
     {
       "path": "../../libs/shared/models/tsconfig.lib.json"
     },
-    {
-      "path": "../../libs/api/products/tsconfig.lib.json"
-    }
   ]
 }
