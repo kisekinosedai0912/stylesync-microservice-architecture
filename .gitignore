@@ -1,2 +1,16 @@
 .nx/
 node_modules/
+
+# Environment variables
+# root
+.env
+.env.local
+.env.*.local
+
+# Specific paths
+apps/.env
+apps/**/.env
+apps/.env.local
+apps/**/.env.local
+libs/shared/storage/db/.env
+libs/shared/storage/db/.env.local

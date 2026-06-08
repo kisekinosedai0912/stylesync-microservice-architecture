@@ -16,6 +16,18 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["@org/source"]
+    "customConditions": ["@org/source"],
+    "baseUrl": ".",
+    "paths": {
+      "@stylesync/utils": ["libs/shared/utils/index.ts"],
+      "@stylesync/types": ["libs/shared/types/index.ts"],
+      "@stylesync/models": ["libs/shared/models/src/index.ts"],
+      "@stylesync/events": ["libs/events/index.ts"],
+      "@stylesync/redis": ["libs/redis/index.ts"],
+      "@stylesync/logger": ["libs/logger/index.ts"],
+      "@stylesync/storage": ["libs/shared/storage/index.ts"],
+      "@stylesync/storage/db": ["libs/shared/storage/db/index.ts"],
+      "@stylesync/storage/blob": ["libs/shared/storage/blob/index.ts"]
+    }
   }
 }

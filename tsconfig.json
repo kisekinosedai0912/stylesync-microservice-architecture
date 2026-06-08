@@ -6,20 +6,11 @@
     {
       "path": "./apps/admin"
     },
-    // {
-    //   "path": "./apps/pos"
-    // },
     {
       "path": "./apps/web"
     },
     {
-      "path": "./libs/api/products"
-    },
-    {
       "path": "./libs/shared/models"
-    },
-    {
-      "path": "./libs/shared/test-utils"
     }
   ]
 }
