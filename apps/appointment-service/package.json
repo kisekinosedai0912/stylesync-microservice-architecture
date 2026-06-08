@@ -1,8 +1,8 @@
 {
-	"name": "api-gateway",
+	"name": "appointment-service",
 	"version": "1.0.0",
 	"description": "",
-	"main": "server.ts",
+	"main": "index.js",
 	"scripts": {
 		"dev": "nodemon --watch . --ext ts --exec \"node --env-file=.env -r ts-node/register\" server.ts",
 		"build": "tsc",
@@ -12,9 +12,5 @@
 	"keywords": [],
 	"author": "stylesync",
 	"license": "ISC",
-	"packageManager": "pnpm@10.32.0",
-	"dependencies": {
-		"http-proxy-middleware": "^4.1.0",
-		"express": "^4.21.2"
-	}
+	"packageManager": "pnpm@10.32.0"
 }
