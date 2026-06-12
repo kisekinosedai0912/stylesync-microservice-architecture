@@ -24,9 +24,10 @@
       "@stylesync/models": ["libs/shared/models/src/index.ts"],
       "@stylesync/events": ["libs/events/index.ts"],
       "@stylesync/redis": ["libs/redis/index.ts"],
-      "@stylesync/logger": ["libs/logger/index.ts"],
-      "@stylesync/storage": ["libs/shared/storage/index.ts"],
-      "@stylesync/storage/db": ["libs/shared/storage/db/index.ts"],
+      "@stylesync/sentry": ["libs/logger/index.ts"],
+      "@stylesync/db": ["libs/shared/storage/db/src/database.ts"],
+      "@stylesync/orm": ["libs/shared/storage/db/index.ts"],
+      "@stylesync/storage/db": ["libs/shared/storage/db/src/schema.ts"],
       "@stylesync/storage/blob": ["libs/shared/storage/blob/index.ts"]
     }
   }
