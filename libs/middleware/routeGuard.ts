@@ -12,7 +12,7 @@ export async function routeGuard(
 	next: NextFunction,
 ): Promise<void> {
 	try {
-		const token = req.cookies.jwtToken;
+		const token = req.cookies.jwt;
 		if (!token) {
 			res.status(401).json({
 				message: "Unauthorized: no token access provided!",
@@ -23,8 +23,8 @@ export async function routeGuard(
 		const env = getEnv();
 		const { db } = getDb();
 
-		const decodedToken = jwt.verify(token, env.JWT_SECRET) as JwtPayload;
-		if (!decodedToken) {
+		const payload = jwt.verify(token, env.JWT_SECRET) as JwtPayload;
+		if (!payload) {
 			res.status(401).json({
 				message: "Unauthorized: malformed/invalid token",
 			});
@@ -35,14 +35,14 @@ export async function routeGuard(
 			.select()
 			.from(users)
 			.leftJoin(roles, eq(users.roleId, roles.id))
-			.where(eq(users.id, decodedToken.userId));
+			.where(eq(users.id, payload.userId));
 
 		if (userWithRole.length === 0) {
 			res.status(404).json({ message: "Unauthorized: User not found" });
 			return;
 		}
 
-		req.user = userWithRole[0];
+		req.user = { id: payload.userId, role: payload.role };
 		next();
 	} catch (error) {
 		console.error("Error in routeGuard:", error);

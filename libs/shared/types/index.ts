@@ -1,2 +1,4 @@
-export type { envSchema, Env } from "./env";
-export type { jwtPayloadSchema, JwtPayload, Role } from "../types/auth/auth";
+export { envSchema } from "./src/env";
+export { jwtPayloadSchema } from "./src/jwt";
+export type { Env } from "./src/env";
+export type { JwtPayload, Role } from "./src/jwt";

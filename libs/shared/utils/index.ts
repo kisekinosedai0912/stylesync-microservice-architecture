@@ -1,1 +1,1 @@
-export { getEnv } from './utility';
+export { getEnv, generateJWT } from "./utility";
