@@ -14,3 +14,7 @@ apps/.env.local
 apps/**/.env.local
 libs/shared/storage/db/.env
 libs/shared/storage/db/.env.local
+
+# Build output
+apps/*/dist/
+apps/*/out-tsc/
