@@ -24,7 +24,7 @@ export const signup: RequestHandler = asyncHandler(
 			.where(or(eq(users.username, username), eq(users.email, email)));
 
 		if (!userDataExist) {
-			throw new AppError(409, "User or Email already exists");
+			throw new AppError(409, "User or Email not found");
 		}
 
 		const [defaultRole] = await db

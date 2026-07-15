@@ -1,6 +1,6 @@
 import { Pool } from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
-import * as schema from "./schema.ts";
+import * as schema from "./schema";
 import { getEnv } from "@stylesync/utils";
 import { Env } from "@stylesync/types";
 
@@ -27,6 +27,5 @@ const dbConnection = (env: Env) => {
 };
 
 let _db: ReturnType<typeof dbConnection> | undefined;
-const env = getEnv();
 
-export const getDb = () => (_db ??= dbConnection(env));
+export const getDb = () => (_db ??= dbConnection(getEnv()));

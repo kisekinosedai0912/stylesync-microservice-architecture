@@ -1,0 +1,8 @@
+{
+	"watch": ["src", "../../libs", ".env", ".env.local"],
+	"ext": "ts,json,local,env",
+	"ignore": ["**/node_modules/**", "**/dist/**"],
+	"delay": 300,
+	"legacyWatch": true,
+	"exec": "NODE_PATH=./node_modules:../../node_modules:../../libs/shared/storage/db/node_modules node --env-file=.env --env-file-if-exists=.env.local --import tsx src/main.ts"
+}

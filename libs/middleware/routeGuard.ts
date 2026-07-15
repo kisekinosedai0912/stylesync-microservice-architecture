@@ -1,10 +1,7 @@
-import { users, roles } from "@stylesync/storage/db";
-import { getDb } from "@stylesync/db";
 import { getEnv } from "@stylesync/utils";
 import { Request, Response, NextFunction } from "express";
 import type { JwtPayload } from "@stylesync/types";
 import jwt from "jsonwebtoken";
-import { eq } from "@stylesync/orm";
 
 export async function routeGuard(
 	req: Request,
@@ -21,24 +18,12 @@ export async function routeGuard(
 		}
 
 		const env = getEnv();
-		const { db } = getDb();
 
 		const payload = jwt.verify(token, env.JWT_SECRET) as JwtPayload;
 		if (!payload) {
 			res.status(401).json({
 				message: "Unauthorized: malformed/invalid token",
 			});
-			return;
-		}
-
-		const userWithRole = await db
-			.select()
-			.from(users)
-			.leftJoin(roles, eq(users.roleId, roles.id))
-			.where(eq(users.id, payload.userId));
-
-		if (userWithRole.length === 0) {
-			res.status(404).json({ message: "Unauthorized: User not found" });
 			return;
 		}
 

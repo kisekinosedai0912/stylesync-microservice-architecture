@@ -32,7 +32,7 @@ export const roles = pgTable("tbl_roles", {
 
 export const users = pgTable("tbl_users", {
 	id: pk(),
-	username: varchar("username", { length: 255 }).notNull(),
+	username: varchar("username", { length: 255 }).unique().notNull(),
 	password: text("password").notNull(),
 	email: varchar("email", { length: 255 }).unique().notNull(),
 	fullname: varchar("fullname", { length: 255 }).notNull(),

@@ -1,5 +1,10 @@
 packages:
-  - 'apps/*'
-  - 'libs/api/products'
-  - 'libs/shared/*'
-  - 'libs/shop/*'
+    - "apps/*"
+    - "libs/shared/*"
+    - "libs/shared/storage/db"
+    - "libs/shared/types/"
+    - "libs/shared/utils"
+    - "libs/middleware"
+    - "libs/redis"
+    - "libs/events"
+    - "libs/sentry"

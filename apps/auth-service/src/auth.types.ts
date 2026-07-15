@@ -5,7 +5,6 @@ export const signupSchema = z.object({
 	password: z.string().nonempty("Must have a password"),
 	email: z.string().nonempty("Email must not be empty"),
 	fullname: z.string().nonempty("User must register its full name"),
-	role: z.string().nonempty("No role specified"),
 });
 
 export const loginSchema = z.object({

@@ -1,17 +1,34 @@
 {
-	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
-	  "composite": false,
-	  "declaration": false,
-	  "declarationMap": false,
-	  "emitDeclarationOnly": false,
-	  "noEmit": true,
-	  "module": "nodenext",
-	  "moduleResolution": "nodenext",
-	  "esModuleInterop": true,
-	  "resolveJsonModule": true,
-	  "types": ["node"]
+		"target": "es2022",
+		"lib": ["es2022"],
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"noEmit": true,
+		"noUnusedLocals": true,
+		"noImplicitReturns": true,
+		"paths": {
+			"@stylesync/utils": ["../../libs/shared/utils/index.ts"],
+			"@stylesync/types": ["../../libs/shared/types/index.ts"],
+			"@stylesync/models": ["../../libs/shared/models/src/index.ts"],
+			"@stylesync/events": ["../../libs/events/index.ts"],
+			"@stylesync/middleware": ["../../libs/middleware/index.ts"],
+			"@stylesync/redis": ["../../libs/redis/index.ts"],
+			"@stylesync/sentry": ["../../libs/logger/index.ts"],
+			"@stylesync/db": ["../../libs/shared/storage/db/src/database.ts"],
+			"@stylesync/orm": ["../../libs/shared/storage/db/index.ts"],
+			"@stylesync/storage/db": ["../../libs/shared/storage/db/src/schema.ts"],
+			"@stylesync/storage/blob": ["../../libs/shared/storage/blob/index.ts"],
+			"@stylesync/response": ["../../libs/shared/api/index.ts"]
+		},
+		"types": ["node"]
 	},
-	"include": ["**/*.ts"],
+	"ts-node": {
+		"transpileOnly": true
+	},
+	"include": ["src/**/*.ts", "../../libs/shared/express.d.ts"],
 	"exclude": ["node_modules", "dist"]
 }
