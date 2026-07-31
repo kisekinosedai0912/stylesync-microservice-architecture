@@ -1,7 +1,9 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import { createProxyMiddleware } from "http-proxy-middleware";
 import { getEnv } from "@stylesync/utils";
+import { requestGuard } from "@stylesync/middleware";
 
 const env = getEnv();
 const app = express();
@@ -23,21 +25,25 @@ const serviceRoutes = [
 		publicPrefix: "/api/auth",
 		target: AUTH_SERVICE_URL,
 		upstreamPrefix: "/api",
+		auth: false,
 	},
 	{
 		publicPrefix: "/api/bookings",
 		target: BOOKING_SERVICE_URL,
 		upstreamPrefix: "/api",
+		auth: true,
 	},
 	{
 		publicPrefix: "/api/inventory",
 		target: INVENTORY_SERVICE_URL,
 		upstreamPrefix: "/api",
+		auth: true,
 	},
 	{
 		publicPrefix: "/api/notification",
 		target: NOTIFICATION_SERVICE_URL,
 		upstreamPrefix: "/api",
+		auth: true,
 	},
 ];
 
@@ -48,9 +54,14 @@ app.use(
 		credentials: true,
 	}),
 );
+app.use(cookieParser());
 
 for (const route of serviceRoutes) {
+	const middleware = route.auth ? [requestGuard] : [];
+
 	app.use(
+		route.publicPrefix,
+		...middleware,
 		createProxyMiddleware({
 			pathFilter: (pathname) => {
 				return (

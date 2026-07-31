@@ -1,3 +1,3 @@
 export { authorizeRoles } from "./authorize";
-export { routeGuard } from "./routeGuard";
+export { requestGuard } from "./requestGuard";
 export { errorHandler, asyncHandler, AppError } from "./handlers";
