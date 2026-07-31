@@ -224,12 +224,19 @@ importers:
 
   apps/api-gateway:
     dependencies:
+      cors:
+        specifier: ^2.8.6
+        version: 2.8.6
       express:
         specifier: ^4.21.2
         version: 4.22.2
       http-proxy-middleware:
         specifier: ^4.1.0
         version: 4.1.0
+    devDependencies:
+      '@types/cors':
+        specifier: ^2.8.19
+        version: 2.8.19
 
   apps/auth-service:
     dependencies:
