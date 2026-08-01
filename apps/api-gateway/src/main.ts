@@ -27,28 +27,25 @@ const serviceRoutes = [
 		target: AUTH_SERVICE_URL,
 		upstreamPrefix: "/api/auth",
 		auth: false,
-		rateLimit: true,
+		rateLimit: authRateLimiter, // auth service's own rate limiter
 	},
 	{
 		publicPrefix: "/api/bookings",
 		target: BOOKING_SERVICE_URL,
 		upstreamPrefix: "/api",
 		auth: true,
-		rateLimit: false,
 	},
 	{
 		publicPrefix: "/api/inventory",
 		target: INVENTORY_SERVICE_URL,
 		upstreamPrefix: "/api",
 		auth: true,
-		rateLimit: false,
 	},
 	{
 		publicPrefix: "/api/notification",
 		target: NOTIFICATION_SERVICE_URL,
 		upstreamPrefix: "/api",
 		auth: true,
-		rateLimit: false,
 	},
 ];
 
@@ -66,7 +63,7 @@ app.use(cookieParser());
 for (const route of serviceRoutes) {
 	const middleware = [
 		// using auth service's own rate limiter
-		...(route.rateLimit ? [authRateLimiter] : []),
+		...(route.rateLimit ? [route.rateLimit] : []),
 		...(route.auth ? [gatewayGuard] : []),
 	];
 
