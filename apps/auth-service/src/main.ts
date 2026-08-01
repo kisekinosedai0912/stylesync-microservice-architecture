@@ -8,12 +8,12 @@ const env = getEnv();
 const app = express();
 
 const HOST = env.HOST ?? "localhost";
-const PORT = Number(env.PORT) || 5001;
+const PORT = Number(env.PORT || 5001);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use("/api", authRoutes);
+app.use("/api/auth", authRoutes);
 
 app.use(errorHandler);
 app.listen(PORT, HOST, async () => {

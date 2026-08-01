@@ -3,7 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { createProxyMiddleware } from "http-proxy-middleware";
 import { getEnv } from "@stylesync/utils";
-import { requestGuard } from "@stylesync/middleware";
+import { gatewayGuard } from "@stylesync/middleware";
 
 const env = getEnv();
 const app = express();
@@ -24,7 +24,7 @@ const serviceRoutes = [
 	{
 		publicPrefix: "/api/auth",
 		target: AUTH_SERVICE_URL,
-		upstreamPrefix: "/api",
+		upstreamPrefix: "/api/auth",
 		auth: false,
 	},
 	{
@@ -57,26 +57,18 @@ app.use(
 app.use(cookieParser());
 
 for (const route of serviceRoutes) {
-	const middleware = route.auth ? [requestGuard] : [];
+	const middleware = route.auth ? [gatewayGuard] : [];
 
 	app.use(
 		route.publicPrefix,
 		...middleware,
 		createProxyMiddleware({
-			pathFilter: (pathname) => {
-				return (
-					pathname === route.publicPrefix ||
-					pathname.startsWith(`${route.publicPrefix}/`)
-				);
-			},
+			pathRewrite: (path) => `${route.publicPrefix}${path}`,
 			target: route.target,
 			changeOrigin: true,
 			xfwd: true,
 			timeout: 10_000,
 			proxyTimeout: 10_000,
-			pathRewrite: {
-				[`^${route.publicPrefix}`]: route.upstreamPrefix,
-			},
 		}),
 	);
 }
