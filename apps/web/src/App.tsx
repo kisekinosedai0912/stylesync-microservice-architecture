@@ -1,31 +1,20 @@
-import { lazy, Suspense } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
-import './assets/css/app.css';
+import { lazy } from 'react';
+// import { Route, Routes, Navigate } from 'react-router-dom';
+import Layout from './layout';
 
 // // Lazy load feature components
 // const ProductList = lazy(() => import('@org/shop-feature-products').then(m => ({ default: m.ProductList })));
 // const ProductDetail = lazy(() => import('@org/shop-feature-product-detail').then(m => ({ default: m.ProductDetail })));
+const Header = lazy(() => import(`./components/Header`))
+const Hero = lazy(() => import(`./components/Hero`))
+
 
 export function App() {
 	return (
-		<div className="app">
-			<header className="app-header">
-				<div className="header-content">
-				<h1 className="app-title">Nx Shop Demo</h1>
-				</div>
-			</header>
-
-			<main className="app-main">
-				<Suspense fallback={<p>loading...</p>}>
-					<Routes>
-						<Route path="/" element={<Navigate to="/products" replace />} />
-						{/* <Route path="/products" element={<ProductList />} />
-						<Route path="/products/:id" element={<ProductDetail />} /> */}
-						<Route path="*" element={<Navigate to="/products" replace />} />
-					</Routes>
-				</Suspense>
-			</main>
-		</div>
+		<Layout>
+			<Header />
+			<Hero />
+		</Layout>
 	);
 }
 
