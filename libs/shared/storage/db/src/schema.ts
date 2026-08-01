@@ -22,7 +22,7 @@ const money = (name: string) => decimal(name, { precision: 10, scale: 2 });
 
 // ---------- users/auth --------------
 
-const roleEnum = pgEnum("role", ["admin", "staff"]);
+export const roleEnum = pgEnum("role", ["admin", "staff"]);
 
 export const roles = pgTable("tbl_roles", {
 	id: pk(),
@@ -55,7 +55,7 @@ export const customer = pgTable("tbl_customer", {
 	createdAt: timestamp("created_at").defaultNow(),
 });
 
-const bookingStatusEnum = pgEnum("booking_status", [
+export const bookingStatusEnum = pgEnum("booking_status", [
 	"pending",
 	"confirmed",
 	"rejected",
@@ -112,13 +112,13 @@ export const services = pgTable("tbl_services", {
 
 // ---------- notification --------------
 
-const notifTypeEnum = pgEnum("notif_type", [
+export const notifTypeEnum = pgEnum("notif_type", [
 	"booking_created",
 	"booking_verification",
 	"booking_confirmed",
 	"booking_rejected",
 ]);
-const notifStatusEnum = pgEnum("notif_status", ["queued", "sent", "failed"]);
+export const notifStatusEnum = pgEnum("notif_status", ["queued", "sent", "failed"]);
 
 export const notification = pgTable(
 	"tbl_notification",
@@ -146,7 +146,7 @@ export const notification = pgTable(
 
 // ---------- inventory --------------
 
-const inventoryStatusEnum = pgEnum("inventory_status", [
+export const inventoryStatusEnum = pgEnum("inventory_status", [
 	"low stocks",
 	"high stocks",
 ]);
@@ -174,7 +174,7 @@ export const products = pgTable("tbl_products", {
 
 // ---------- transactions --------------
 
-const typeEnum = pgEnum("transaction_type", ["walkin", "booking", "pos"]);
+export const typeEnum = pgEnum("transaction_type", ["walkin", "booking", "pos"]);
 
 export const transactions = pgTable(
 	"tbl_transactions",

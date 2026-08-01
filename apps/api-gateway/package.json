@@ -14,7 +14,14 @@
 	"license": "ISC",
 	"packageManager": "pnpm@10.32.0",
 	"dependencies": {
-		"http-proxy-middleware": "^4.1.0",
-		"express": "^4.21.2"
+		"@types/cookie-parser": "^1.4.10",
+		"cookie-parser": "^1.4.7",
+		"cors": "^2.8.6",
+		"express": "^4.21.2",
+		"express-rate-limit": "^8.6.1",
+		"http-proxy-middleware": "^4.1.0"
+	},
+	"devDependencies": {
+		"@types/cors": "^2.8.19"
 	}
 }

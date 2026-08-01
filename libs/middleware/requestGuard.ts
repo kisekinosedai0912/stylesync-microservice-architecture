@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from "express";
 import type { JwtPayload } from "@stylesync/types";
 import jwt from "jsonwebtoken";
 
-export async function routeGuard(
+export async function gatewayGuard(
 	req: Request,
 	res: Response,
 	next: NextFunction,
