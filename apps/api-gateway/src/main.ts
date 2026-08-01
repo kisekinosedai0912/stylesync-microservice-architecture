@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import { createProxyMiddleware } from "http-proxy-middleware";
 import { getEnv } from "@stylesync/utils";
 import { gatewayGuard } from "@stylesync/middleware";
+import { authRateLimiter, globalRateLimiter } from "./rate-limiter";
 
 const env = getEnv();
 const app = express();
@@ -26,24 +27,28 @@ const serviceRoutes = [
 		target: AUTH_SERVICE_URL,
 		upstreamPrefix: "/api/auth",
 		auth: false,
+		rateLimit: true,
 	},
 	{
 		publicPrefix: "/api/bookings",
 		target: BOOKING_SERVICE_URL,
 		upstreamPrefix: "/api",
 		auth: true,
+		rateLimit: false,
 	},
 	{
 		publicPrefix: "/api/inventory",
 		target: INVENTORY_SERVICE_URL,
 		upstreamPrefix: "/api",
 		auth: true,
+		rateLimit: false,
 	},
 	{
 		publicPrefix: "/api/notification",
 		target: NOTIFICATION_SERVICE_URL,
 		upstreamPrefix: "/api",
 		auth: true,
+		rateLimit: false,
 	},
 ];
 
@@ -54,10 +59,16 @@ app.use(
 		credentials: true,
 	}),
 );
+// using global rate limiter for all services except auth
+app.use(globalRateLimiter);
 app.use(cookieParser());
 
 for (const route of serviceRoutes) {
-	const middleware = route.auth ? [gatewayGuard] : [];
+	const middleware = [
+		// using auth service's own rate limiter
+		...(route.rateLimit ? [authRateLimiter] : []),
+		...(route.auth ? [gatewayGuard] : []),
+	];
 
 	app.use(
 		route.publicPrefix,
