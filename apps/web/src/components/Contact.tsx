@@ -15,7 +15,7 @@ const contactChannels = [
     {
         name: "Facebook",
         description: "Follow salon updates and send us a direct message.",
-        href: "",
+        href: "https://www.facebook.com/dahlingsescapesalonandspa",
         icon: FacebookLogoIcon,
     },
     {

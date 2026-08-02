@@ -33,6 +33,7 @@ export default function Bookings() {
 
     return (
         <section
+            id="booking"
             className="w-full bg-[#f7f4ee] px-5 py-20 text-[#433b35] sm:px-8 sm:py-24 lg:px-16 lg:py-28"
             aria-labelledby="booking-title"
         >

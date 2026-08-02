@@ -44,7 +44,10 @@ const featuredData: FeaturedData[] = [
 
 export default function Services() {
     return (
-        <section className="flex min-h-screen w-full flex-col items-center justify-start overflow-hidden bg-white px-5 pb-20 text-[#433b35] sm:px-8 sm:pb-24 lg:px-16 lg:pb-28">
+        <section
+            id="services"
+            className="flex min-h-screen w-full flex-col items-center justify-start overflow-hidden bg-white px-5 pb-20 text-[#433b35] sm:px-8 sm:pb-24 lg:px-16 lg:pb-28"
+        >
             <AboutServices />
             <Featured />
         </section>

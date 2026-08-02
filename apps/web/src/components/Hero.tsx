@@ -11,7 +11,7 @@ const benefits = [
 
 export default function Hero() {
     return (
-        <section className="hero" aria-labelledby="hero-title">
+        <section id="hero" className="hero" aria-labelledby="hero-title">
             <Header />
             <div className="hero_intro">
                 <p>
