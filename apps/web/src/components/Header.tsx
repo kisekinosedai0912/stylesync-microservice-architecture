@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
     return (
         <header className="hero_header">
@@ -13,9 +15,9 @@ export default function Header() {
                 <NavLink link="#contact" name="Contact" />
             </nav>
 
-            <a className="hero_menu-link" href="#login">
+            <Link className="hero_menu-link" to="/login">
                 Login
-            </a>
+            </Link>
         </header>
     );
 }
