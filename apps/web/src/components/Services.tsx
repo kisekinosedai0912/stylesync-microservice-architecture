@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
 import {
@@ -67,37 +69,41 @@ function AboutServices() {
 function Featured() {
     return (
         <section className="grid w-full max-w-5xl gap-8 md:grid-cols-3">
-            {featuredData.map((data) => {
-                return (
-                    <Card
-                        key={data.title}
-                        className="mx-auto w-full max-w-sm pt-0"
-                    >
-                        <div className="relative aspect-video overflow-hidden">
-                            <img
-                                className="h-full w-full object-cover"
-                                src={data.img}
-                                alt=""
-                            />
-                            <div className="pointer-events-none absolute inset-0 bg-black/20" />
-                        </div>
-                        <CardHeader>
-                            <CardAction>
-                                <Badge variant="secondary">Featured</Badge>
-                            </CardAction>
-                            <CardTitle>{data.title}</CardTitle>
-                            <CardDescription>
-                                {data.description}
-                            </CardDescription>
-                        </CardHeader>
-                        <CardFooter>
-                            <Button className="w-full cursor-pointer">
-                                {data.ctaText}
-                            </Button>
-                        </CardFooter>
-                    </Card>
-                );
-            })}
+            {featuredData.map((data) => (
+                <FeaturedCard key={data.title} data={data} />
+            ))}
         </section>
     );
 }
+
+const FeaturedCard = memo(function FeaturedCard({
+    data,
+}: {
+    data: FeaturedData;
+}) {
+    return (
+        <Card className="mx-auto w-full max-w-sm pt-0">
+            <div className="relative aspect-video overflow-hidden">
+                <img
+                    className="h-full w-full object-cover"
+                    src={data.img}
+                    alt="featured services of dahling's spa & salon"
+                    loading="lazy"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-black/20" />
+            </div>
+            <CardHeader>
+                <CardAction>
+                    <Badge variant="secondary">Featured</Badge>
+                </CardAction>
+                <CardTitle>{data.title}</CardTitle>
+                <CardDescription>{data.description}</CardDescription>
+            </CardHeader>
+            <CardFooter>
+                <Button className="w-full cursor-pointer">
+                    {data.ctaText}
+                </Button>
+            </CardFooter>
+        </Card>
+    );
+});

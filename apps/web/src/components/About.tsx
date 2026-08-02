@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 export default function About() {
     return (
         <section className="flex min-h-screen w-full flex-col items-center justify-start overflow-hidden bg-[#f7f4ee] px-5 pb-20 text-[#433b35] sm:px-8 sm:pb-24 lg:px-16 lg:pb-28">
@@ -22,7 +24,7 @@ function TopSection() {
     );
 }
 
-function BottomSection() {
+const BottomSection = memo(function BottomSection() {
     return (
         <div className="grid w-full max-w-5xl items-stretch gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(20rem,0.95fr)] lg:gap-14 xl:gap-20">
             <img
@@ -53,4 +55,4 @@ function BottomSection() {
             </div>
         </div>
     );
-}
+});
