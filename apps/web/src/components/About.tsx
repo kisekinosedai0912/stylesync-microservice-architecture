@@ -48,7 +48,7 @@ function BottomSection() {
                 />
                 <p className="max-w-md font-serif text-lg leading-7 text-[#66594f] sm:text-xl sm:leading-8">
                     Here, quality is everything.. you are the priority and you
-                    matter while we only serve what you deserve.
+                    matter, while we only serve what you deserve.
                 </p>
             </div>
         </div>

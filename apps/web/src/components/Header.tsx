@@ -13,8 +13,8 @@ export default function Header() {
                 <NavLink link="#contact" name="Contact" />
             </nav>
 
-            <a className="hero_menu-link" href="#services">
-                Explore
+            <a className="hero_menu-link" href="#login">
+                Login
             </a>
         </header>
     );
