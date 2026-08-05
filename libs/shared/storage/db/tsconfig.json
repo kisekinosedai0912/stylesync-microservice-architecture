@@ -15,5 +15,16 @@
 			"@stylesync/types": ["../../../../libs/shared/types/index.ts"]
 		}
 	},
-	"include": ["src/**/*.ts", "index.ts"]
+  "include": [
+    "src/**/*.ts",
+    "index.ts"
+  ],
+  "references": [
+    {
+      "path": "../../types"
+    },
+    {
+      "path": "../../utils"
+    }
+  ]
 }

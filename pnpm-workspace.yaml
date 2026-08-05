@@ -1,5 +1,6 @@
 packages:
     - "apps/*"
+    - "libs/auth"
     - "libs/shared/*"
     - "libs/shared/storage/db"
     - "libs/shared/types/"

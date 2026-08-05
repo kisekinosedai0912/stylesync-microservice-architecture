@@ -1,16 +1,28 @@
 {
-  "extends": "./tsconfig.base.json",
-  "compileOnSave": false,
-  "files": [],
-  "references": [
-    {
-      "path": "./apps/admin"
-    },
-    {
-      "path": "./apps/web"
-    },
-    {
-      "path": "./libs/shared/models"
-    }
-  ]
+    "extends": "./tsconfig.base.json",
+    "compileOnSave": false,
+    "files": [],
+    "references": [
+      {
+        "path": "./apps/admin"
+      },
+      {
+        "path": "./apps/web"
+      },
+      {
+        "path": "./libs/shared/models"
+      },
+      {
+        "path": "./libs/auth"
+      },
+      {
+        "path": "./libs/sentry"
+      },
+      {
+        "path": "./libs/shared/types"
+      },
+      {
+        "path": "./libs/shared/utils"
+      }
+    ]
 }

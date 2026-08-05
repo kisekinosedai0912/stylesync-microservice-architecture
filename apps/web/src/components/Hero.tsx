@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import Header from "./Header";
 
 const benefits = [
@@ -9,24 +11,20 @@ const benefits = [
 
 export default function Hero() {
     return (
-        <section className="hero" aria-labelledby="hero-title">
+        <section id="hero" className="hero" aria-labelledby="hero-title">
             <Header />
             <div className="hero_intro">
                 <p>
                     Thoughtful treatments, quiet rituals, and visible
                     results—created around the needs of your skin.
                 </p>
-                <a className="hero_cta" href="#appointment">
+                <a className="hero_cta" href="#booking">
                     Book an appointment
                     <span aria-hidden="true">↗</span>
                 </a>
             </div>
 
-            <img
-                className="hero_model"
-                src="/model.png"
-                alt="Woman relaxing during a beauty ritual"
-            />
+            <HeroModel />
 
             <div className="hero_title-block">
                 <p className="hero_eyebrow">Uncover the beauty within...</p>
@@ -51,3 +49,14 @@ export default function Hero() {
         </section>
     );
 }
+
+const HeroModel = memo(function HeroModel() {
+    return (
+        <img
+            className="hero_model"
+            src="/model.png"
+            alt="Woman relaxing during a beauty ritual"
+            loading="lazy"
+        />
+    );
+});

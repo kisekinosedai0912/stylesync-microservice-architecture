@@ -18,3 +18,6 @@ libs/shared/storage/db/.env.local
 # Build output
 apps/*/dist/
 apps/*/out-tsc/
+libs/auth/dist/
+libs/shared/types/dist/
+libs/shared/utils/dist/
