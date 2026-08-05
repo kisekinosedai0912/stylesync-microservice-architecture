@@ -19,3 +19,5 @@ libs/shared/storage/db/.env.local
 apps/*/dist/
 apps/*/out-tsc/
 libs/*/dist/
+libs/shared/types/dist/
+libs/shared/utils/dist/
