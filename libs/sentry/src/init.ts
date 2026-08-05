@@ -10,7 +10,7 @@ export interface SentryInitOptions {
 
 let initialized = false;
 
-export function initSentry(options: SentryInitOptions): void {
+export function sentryInit(options: SentryInitOptions): void {
     if (initialized) {
         return;
     }
