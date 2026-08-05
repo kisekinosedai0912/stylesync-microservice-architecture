@@ -49,6 +49,7 @@ const BottomSection = memo(function BottomSection() {
                 <img
                     src="/founder.jpg"
                     alt="Laura, founder of Dahling's Salon & SPA"
+                    loading="lazy"
                     className="my-8 h-24 w-24 rounded-full border-2 border-[#aa9381]/45 object-cover shadow-[0_8px_20px_rgba(79,60,47,0.15)] sm:h-28 sm:w-28"
                 />
                 <p className="max-w-md font-serif text-lg leading-7 text-[#66594f] sm:text-xl sm:leading-8">

@@ -3,6 +3,9 @@ import cookieParser from "cookie-parser";
 import { errorHandler } from "@stylesync/middleware";
 import { getEnv } from "@stylesync/utils";
 import authRoutes from "./auth.routes";
+import { sentryInit } from "@stylesync/sentry";
+
+sentryInit();
 
 const env = getEnv();
 const app = express();
@@ -17,5 +20,5 @@ app.use("/api/auth", authRoutes);
 
 app.use(errorHandler);
 app.listen(PORT, HOST, async () => {
-	console.log(`[ ready ] Server is now running at: http://${HOST}:${PORT}`);
+    console.log(`[ ready ] Server is now running at: http://${HOST}:${PORT}`);
 });
