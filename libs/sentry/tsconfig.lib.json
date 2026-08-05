@@ -1,39 +1,27 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist",
-    "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
-    "declaration": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": true,
-    "composite": true,
-    "types": [
-      "node"
-    ],
-    "paths": {
-      "@stylesync/types": [
-        "../shared/types/dist/index.d.ts"
-      ],
-      "@stylesync/utils": [
-        "../shared/utils/dist/index.d.ts"
-      ]
-    }
-  },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "references": [
-    {
-      "path": "../shared/types/tsconfig.lib.json"
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "dist",
+        "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
+        "declaration": true,
+        "declarationMap": true,
+        "emitDeclarationOnly": true,
+        "composite": true,
+        "types": ["node"],
+        "paths": {
+            "@stylesync/types": ["../shared/types/dist/index.d.ts"],
+            "@stylesync/utils": ["../shared/utils/dist/index.d.ts"]
+        }
     },
-    {
-      "path": "../shared/utils/tsconfig.lib.json"
-    }
-  ],
-  "exclude": [
-    "dist",
-    "src/**/*.spec.ts",
-    "src/**/*.test.ts"
-  ]
+    "include": ["src/**/*.ts"],
+    "references": [
+        {
+            "path": "../shared/types/tsconfig.lib.json"
+        },
+        {
+            "path": "../shared/utils/tsconfig.lib.json"
+        }
+    ],
+    "exclude": ["dist", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }
