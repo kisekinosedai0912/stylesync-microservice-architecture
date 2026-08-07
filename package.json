@@ -6,6 +6,7 @@
   "private": true,
   "dependencies": {
     "@tanstack/react-query": "^5.101.0",
+    "axios": "^1.19.0",
     "cloudinary": "^2.10.0",
     "cookie-parser": "^1.4.7",
     "express": "^4.21.2",

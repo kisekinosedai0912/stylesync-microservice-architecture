@@ -11,10 +11,11 @@
             "@nx/react/typings/image.d.ts",
             "vite/client"
         ],
-        "rootDir": "src",
+        "rootDir": ".",
         "paths": {
             "@/*": ["./src/*"],
-            "@stylesync/auth-ui": ["../../libs/auth/src/index.ts"]
+            "@stylesync/auth-ui": ["../../libs/auth/src/index.ts"],
+            "@stylesync/api": ["../../libs/shared/api/index.ts"]
         }
     },
     "exclude": [
@@ -43,6 +44,9 @@
         },
         {
             "path": "../../libs/shared/models/tsconfig.lib.json"
+        },
+        {
+            "path": "../../libs/shared/api/tsconfig.lib.json"
         }
     ]
 }

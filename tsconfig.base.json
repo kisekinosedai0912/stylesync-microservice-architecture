@@ -20,6 +20,7 @@
         "paths": {
             "@stylesync/utils": ["./libs/shared/utils/index.ts"],
             "@stylesync/types": ["./libs/shared/types/index.ts"],
+            "@stylesync/api": ["./libs/shared/api/index.ts"],
             "@stylesync/models": ["./libs/shared/models/src/index.ts"],
             "@stylesync/events": ["./libs/events/index.ts"],
             "@stylesync/middleware": ["./libs/middleware/index.ts"],
@@ -29,7 +30,6 @@
             "@stylesync/orm": ["./libs/shared/storage/db/index.ts"],
             "@stylesync/storage/db": ["./libs/shared/storage/db/src/schema.ts"],
             "@stylesync/storage/blob": ["./libs/shared/storage/blob/index.ts"],
-            "@stylesync/response": ["./libs/shared/api/index.ts"],
             "@stylesync/auth-ui": ["./libs/auth/src/index.ts"]
         }
     }
