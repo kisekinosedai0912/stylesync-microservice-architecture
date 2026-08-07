@@ -21,3 +21,5 @@ apps/*/out-tsc/
 libs/auth/dist/
 libs/shared/types/dist/
 libs/shared/utils/dist/
+libs/shared/api/dist/
+libs/sentry/dist/
