@@ -30,7 +30,9 @@
             "@stylesync/orm": ["./libs/shared/storage/db/index.ts"],
             "@stylesync/storage/db": ["./libs/shared/storage/db/src/schema.ts"],
             "@stylesync/storage/blob": ["./libs/shared/storage/blob/index.ts"],
-            "@stylesync/auth-ui": ["./libs/auth/src/index.ts"]
+            "@stylesync/auth-ui": ["./libs/auth/src/index.ts"],
+            "@stylesync/ui": ["./libs/shadcn/ui/src/index.ts"],
+            "@stylesync/zustand": ["./libs/zustand/index.ts"]
         }
     }
 }

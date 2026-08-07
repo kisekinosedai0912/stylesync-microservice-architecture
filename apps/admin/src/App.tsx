@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useAuthStore } from "./features/auth/auth.store";
 import { Dashboard } from "./pages/Dashboard";
-import { LoginPage, SignUpPage } from "@stylesync/auth-ui";
+import { LoginPage, SignUpPage } from "../../../libs/auth/src";
 
 export function App() {
     const user = useAuthStore((state) => state.user);

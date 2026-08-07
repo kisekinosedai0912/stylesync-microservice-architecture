@@ -15,13 +15,11 @@
     "./package.json": "./package.json"
   },
   "peerDependencies": {
+    "@tanstack/react-query": "^5.0.0",
     "react": "^19.0.0"
   },
   "nx": {
     "projectType": "library",
-    "tags": [
-      "scope:shared",
-      "type:ui"
-    ]
+    "tags": ["scope:shared", "type:ui"]
   }
 }

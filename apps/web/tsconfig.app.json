@@ -15,7 +15,9 @@
         "paths": {
             "@/*": ["./src/*"],
             "@stylesync/auth-ui": ["../../libs/auth/src/index.ts"],
-            "@stylesync/api": ["../../libs/shared/api/index.ts"]
+            "@stylesync/api": ["../../libs/shared/api/index.ts"],
+            "@stylesync/ui": ["../../libs/shadcn/ui/src/index.ts"],
+            "@stylesync/ui/*": ["../../libs/shadcn/ui/src/*"]
         }
     },
     "exclude": [
@@ -47,6 +49,9 @@
         },
         {
             "path": "../../libs/shared/api/tsconfig.lib.json"
+        },
+        {
+            "path": "../../libs/shadcn/ui/tsconfig.lib.json"
         }
     ]
 }

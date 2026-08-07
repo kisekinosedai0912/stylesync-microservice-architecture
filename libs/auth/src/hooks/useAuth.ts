@@ -1,25 +1,18 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { authApi } from "@/api/authApi";
+import { authApi } from "../api/authApi";
+import { useAuthStore } from "@stylesync/zustand";
 
-type RequestParams = {
-    page?: string;
-    limit?: string;
-    search?: string;
-};
-
-export function useAuth(
-    page: RequestParams,
-    limit: RequestParams,
-    search: RequestParams,
-) {
+export function useAuth() {
     const queryClient = useQueryClient();
+    const { setUser, logout } = useAuthStore();
 
     const useLogin = useMutation({
         mutationFn: authApi.login,
-        onSuccess: async () => {
+        onSuccess: async (userData) => {
             await queryClient.invalidateQueries({
                 queryKey: ["user-authentication"],
             });
+            setUser(userData);
         },
         onError: (error) => {
             console.error("Login failed: ", error);
@@ -39,8 +32,9 @@ export function useAuth(
     });
 
     const useLogout = useMutation({
-        mutationFn: authApi.login,
+        mutationFn: authApi.logout,
         onSuccess: async () => {
+            logout();
             await queryClient.invalidateQueries({
                 queryKey: ["user-authentication"],
             });

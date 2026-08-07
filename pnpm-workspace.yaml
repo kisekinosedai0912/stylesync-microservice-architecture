@@ -9,3 +9,4 @@ packages:
     - "libs/redis"
     - "libs/events"
     - "libs/sentry"
+    - "libs/shadcn/ui"

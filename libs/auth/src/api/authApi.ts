@@ -1,13 +1,5 @@
 import { api } from "@stylesync/api";
-
-type UserData = {
-    id: string;
-    username: string;
-    email?: string;
-    password: string;
-    fullname: string;
-};
-type LoginPayload = Omit<UserData, "id" | "fullname">;
+import { LoginPayload, SignupPayload } from "../types/payloads";
 
 export const authApi = {
     login: async (payload: LoginPayload) => {
@@ -15,7 +7,7 @@ export const authApi = {
         return response.data;
     },
 
-    signup: async (payload: UserData) => {
+    signup: async (payload: SignupPayload) => {
         const response = await api.post("/api/signup", payload);
         return response.data;
     },
