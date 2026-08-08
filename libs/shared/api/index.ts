@@ -1,2 +1,2 @@
-export { ok, created } from "./response";
-export { api } from "./requests";
+export { ok, created } from "./response.js";
+export { api } from "./requests.js";

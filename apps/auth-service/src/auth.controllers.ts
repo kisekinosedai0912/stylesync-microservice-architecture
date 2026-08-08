@@ -1,6 +1,6 @@
 import { asyncHandler, AppError } from "@stylesync/middleware";
 import { generateJWT } from "@stylesync/utils";
-import { ok, created } from "@stylesync/response";
+import { ok, created } from "@stylesync/api";
 import { RequestHandler, Request, Response } from "express";
 import { signupSchema, loginSchema } from "./auth.types";
 import { authService } from "../services/auth.services";

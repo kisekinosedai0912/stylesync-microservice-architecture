@@ -1,21 +1,40 @@
 {
-  "name": "db",
+  "name": "@stylesync/db",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "private": true,
+  "type": "module",
+  "main": "./src/database.ts",
+  "types": "./src/database.ts",
+  "exports": {
+    ".": {
+      "types": "./src/database.ts",
+      "import": "./src/database.ts",
+      "default": "./src/database.ts"
+    },
+    "./orm": {
+      "types": "./index.ts",
+      "import": "./index.ts",
+      "default": "./index.ts"
+    },
+    "./schema": {
+      "types": "./src/schema.ts",
+      "import": "./src/schema.ts",
+      "default": "./src/schema.ts"
+    },
+    "./package.json": "./package.json"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.32.0",
   "dependencies": {
+    "@stylesync/types": "workspace:*",
+    "@stylesync/utils": "workspace:*",
     "drizzle-orm": "^0.45.2",
     "pg": "^8.21.0"
   },
   "devDependencies": {
     "@types/pg": "^8.20.0",
     "drizzle-kit": "^0.31.10"
+  },
+  "nx": {
+    "projectType": "library",
+    "tags": ["scope:shared", "type:data"]
   }
 }

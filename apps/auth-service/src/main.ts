@@ -1,22 +1,19 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import { errorHandler } from "@stylesync/middleware";
-import { getEnv } from "@stylesync/utils";
+// import { getEnv } from "@stylesync/utils";
 import authRoutes from "./auth.routes";
-import { sentryInit } from "@stylesync/sentry";
 
-sentryInit();
-
-const env = getEnv();
+// const env = getEnv();
 const app = express();
 
-const HOST = env.HOST ?? "localhost";
-const PORT = Number(env.PORT || 5001);
+const HOST = process.env.HOST ?? "localhost";
+const PORT = Number(process.env.PORT || 5001);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use("/api/auth", authRoutes);
+app.use("/auth", authRoutes);
 
 app.use(errorHandler);
 app.listen(PORT, HOST, async () => {

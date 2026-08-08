@@ -4,14 +4,21 @@
   "private": true,
   "type": "module",
   "main": "./index.ts",
-  "types": "./index.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./index.ts",
+      "types": "./dist/index.d.ts",
       "import": "./index.ts",
       "default": "./index.ts"
     },
     "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@stylesync/types": "workspace:*"
+  },
+  "peerDependencies": {
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.3"
   },
   "nx": {
     "projectType": "library",

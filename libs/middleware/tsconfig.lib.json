@@ -1,0 +1,36 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "rootDir": ".",
+        "outDir": "dist",
+        "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
+        "declaration": true,
+        "declarationMap": true,
+        "emitDeclarationOnly": true,
+        "composite": true,
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "types": ["node"],
+        "paths": {
+            "@stylesync/types": ["../shared/types/dist/index.d.ts"],
+            "@stylesync/utils": ["../shared/utils/dist/index.d.ts"]
+        }
+    },
+    "include": [
+        "*.ts",
+        "../shared/express.d.ts",
+        "src/authorize.ts",
+        "src/establishUser.ts",
+        "src/handlers.ts",
+        "src/requestGuard.ts"
+    ],
+    "references": [
+        {
+            "path": "../shared/types/tsconfig.lib.json"
+        },
+        {
+            "path": "../shared/utils/tsconfig.lib.json"
+        }
+    ],
+    "exclude": ["dist", "**/*.spec.ts", "**/*.test.ts"]
+}

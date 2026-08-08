@@ -1,6 +1,6 @@
 import type { Signup, Login } from "../src/auth.types";
-import { eq, or } from "@stylesync/orm";
-import { users, roles } from "@stylesync/storage/db";
+import { eq, or } from "@stylesync/db/orm";
+import { users, roles } from "@stylesync/db/schema";
 import { getDb } from "@stylesync/db";
 import { AppError } from "@stylesync/middleware";
 import bcrypt from "bcrypt";
