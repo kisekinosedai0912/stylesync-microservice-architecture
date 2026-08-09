@@ -2,16 +2,14 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { createProxyMiddleware } from "http-proxy-middleware";
-// import { getEnv } from "@stylesync/utils";
 import { gatewayGuard } from "@stylesync/middleware";
 import { authRateLimiter, globalRateLimiter } from "./rate-limiter";
 
-// const env = getEnv();
 const app = express();
 
 const HOST = process.env.HOST ?? "0.0.0.0";
 const PORT = Number(process.env.PORT || 4000);
-const FRONTEND_URL = process.env.FRONTEND_URL ?? "https://localhost:3000";
+const FRONTEND_URL = process.env.FRONTEND_URL ?? "http://localhost:4200";
 
 // microservices URL
 const AUTH_SERVICE_URL =

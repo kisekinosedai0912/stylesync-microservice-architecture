@@ -56,7 +56,10 @@ export function LoginPage({ signUpHref = "/sign-up" }: LoginPageProps) {
         [useLogin],
     );
 
-    const [data, action, isSubmitting] = useActionState(handleLogin, undefined);
+    const [state, action, isSubmitting] = useActionState(
+        handleLogin,
+        undefined,
+    );
 
     return (
         <AuthShell
@@ -67,7 +70,7 @@ export function LoginPage({ signUpHref = "/sign-up" }: LoginPageProps) {
             <form className="ss-auth__form" action={action}>
                 <AuthField
                     label="Username"
-                    defaultValue={data?.fieldData.username}
+                    defaultValue={state?.fieldData.username}
                     type="text"
                     name="username"
                     autoComplete="username"
@@ -76,7 +79,7 @@ export function LoginPage({ signUpHref = "/sign-up" }: LoginPageProps) {
                 />
                 <AuthField
                     label="Password"
-                    defaultValue={data?.fieldData.password}
+                    defaultValue={state?.fieldData.password}
                     type="password"
                     name="password"
                     autoComplete="current-password"
