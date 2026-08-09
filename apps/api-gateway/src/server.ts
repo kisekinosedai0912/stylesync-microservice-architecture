@@ -61,7 +61,6 @@ app.use(
 // using global rate limiter for all services except auth
 app.use(globalRateLimiter);
 app.use(cookieParser());
-app.use("/api/auth/logout", gatewayGuard);
 
 for (const route of serviceRoutes) {
     const middleware = [

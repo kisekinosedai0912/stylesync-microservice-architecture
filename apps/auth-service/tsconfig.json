@@ -1,29 +1,43 @@
 {
-    "extends": "../../tsconfig.base.json",
-    "compilerOptions": {
-        "target": "es2022",
-        "lib": ["es2022"],
-        "module": "esnext",
-        "moduleResolution": "bundler",
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "noEmit": true,
-        "noUnusedLocals": true,
-        "noImplicitReturns": true,
-        "types": ["node"]
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2022"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "composite": false,
+    "declarationMap": false,
+    "emitDeclarationOnly": false,
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "types": ["node"],
+    "paths": {}
+  },
+  "include": [
+    "src/**/*.ts",
+    "services/**/*.ts",
+    "../../libs/shared/express.d.ts"
+  ],
+  "exclude": ["node_modules", "dist"],
+  "references": [
+    {
+      "path": "../../libs/shared/types/tsconfig.lib.json"
     },
-    "ts-node": {
-        "transpileOnly": true
+    {
+      "path": "../../libs/shared/utils/tsconfig.lib.json"
     },
-    "include": ["src/**/*.ts", "../../libs/shared/express.d.ts"],
-    "exclude": ["node_modules", "dist"],
-    "references": [
-        {
-            "path": "../../libs/shared/types"
-        },
-        {
-            "path": "../../libs/shared/utils"
-        }
-    ]
+    {
+      "path": "../../libs/shared/api/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/shared/storage/db/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/middleware/tsconfig.lib.json"
+    }
+  ]
 }

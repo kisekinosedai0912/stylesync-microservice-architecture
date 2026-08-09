@@ -4,15 +4,15 @@
   "private": true,
   "type": "module",
   "main": "./index.ts",
-  "types": "./index.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./index.ts",
+      "types": "./dist/index.d.ts",
       "import": "./index.ts",
       "default": "./index.ts"
     },
     "./response": {
-      "types": "./response.ts",
+      "types": "./dist/response.d.ts",
       "import": "./response.ts",
       "default": "./response.ts"
     },

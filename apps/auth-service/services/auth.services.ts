@@ -7,7 +7,7 @@ import bcrypt from "bcrypt";
 
 type Database = ReturnType<typeof getDb>["db"];
 
-export class AuthService {
+class AuthService {
     constructor(private readonly db: Database) {}
 
     async signup(payload: Signup) {
@@ -27,6 +27,16 @@ export class AuthService {
         }
 
         const hashedPassword = await this.hashPassword(password);
+        const [role] = await this.db
+            .select({ id: roles.id, role: roles.role })
+            .from(roles)
+            .where(eq(roles.role, "staff"))
+            .limit(1);
+
+        if (!role) {
+            throw new AppError(404, "Selected role not found");
+        }
+
         const [newUser] = await this.db
             .insert(users)
             .values({
@@ -34,6 +44,7 @@ export class AuthService {
                 email,
                 password: hashedPassword,
                 fullname,
+                roleId: role.id,
             })
             .returning({
                 id: users.id,
@@ -44,7 +55,7 @@ export class AuthService {
         if (!newUser) {
             throw new AppError(500, "Signup failure: failed to create user ");
         }
-        return newUser;
+        return { newUser, userRole: role.role };
     }
 
     async login(payload: Login) {
@@ -66,24 +77,19 @@ export class AuthService {
             throw new AppError(401, "Invalid credentials!");
         }
 
+        const { password: hashedPassword, ...authenticatedUser } = account;
         const isCorrectPassword = await bcrypt.compare(
             password,
-            account.password,
+            hashedPassword,
         );
         if (!isCorrectPassword) {
             throw new AppError(401, "Invalid password!");
         }
 
-        const role = account.role;
+        const role = authenticatedUser.role;
         if (!role) {
             throw new AppError(403, "User has no role assigned");
         }
-
-        const {
-            password: _pw,
-            role: _unusedRole,
-            ...authenticatedUser
-        } = account;
 
         return { ...authenticatedUser, role };
     }

@@ -4,20 +4,20 @@
   "private": true,
   "type": "module",
   "main": "./src/database.ts",
-  "types": "./src/database.ts",
+  "types": "./dist/src/database.d.ts",
   "exports": {
     ".": {
-      "types": "./src/database.ts",
+      "types": "./dist/src/database.d.ts",
       "import": "./src/database.ts",
       "default": "./src/database.ts"
     },
     "./orm": {
-      "types": "./index.ts",
+      "types": "./dist/index.d.ts",
       "import": "./index.ts",
       "default": "./index.ts"
     },
     "./schema": {
-      "types": "./src/schema.ts",
+      "types": "./dist/src/schema.d.ts",
       "import": "./src/schema.ts",
       "default": "./src/schema.ts"
     },

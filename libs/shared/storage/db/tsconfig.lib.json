@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../../../tsconfig.base.json",
   "compilerOptions": {
     "rootDir": ".",
     "outDir": "dist",
@@ -12,17 +12,17 @@
     "moduleResolution": "bundler",
     "types": ["node"],
     "paths": {
-      "@stylesync/types": ["../shared/types/dist/index.d.ts"],
-      "@stylesync/utils": ["../shared/utils/dist/index.d.ts"]
+      "@stylesync/types": ["../../types/dist/index.d.ts"],
+      "@stylesync/utils": ["../../utils/dist/index.d.ts"]
     }
   },
-  "include": ["index.ts", "src/**/*.ts", "../shared/express.d.ts"],
+  "include": ["index.ts", "src/**/*.ts"],
   "references": [
     {
-      "path": "../shared/types/tsconfig.lib.json"
+      "path": "../../types/tsconfig.lib.json"
     },
     {
-      "path": "../shared/utils/tsconfig.lib.json"
+      "path": "../../utils/tsconfig.lib.json"
     }
   ],
   "exclude": ["dist", "**/*.spec.ts", "**/*.test.ts"]

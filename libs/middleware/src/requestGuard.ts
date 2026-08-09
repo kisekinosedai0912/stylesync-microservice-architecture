@@ -1,7 +1,16 @@
-import { getEnv } from "@stylesync/utils";
 import { Request, Response, NextFunction } from "express";
 import { jwtPayloadSchema } from "@stylesync/types";
 import jwt from "jsonwebtoken";
+
+function getJwtSecret(): string {
+    const secret = process.env.JWT_SECRET;
+    if (!secret) {
+        throw new Error(
+            "JWT_SECRET is not configured in the API gateway environment",
+        );
+    }
+    return secret;
+}
 
 export async function gatewayGuard(
     req: Request,
@@ -17,8 +26,7 @@ export async function gatewayGuard(
             return;
         }
 
-        const env = getEnv();
-        const payload = jwt.verify(token, env.JWT_SECRET);
+        const payload = jwt.verify(token, getJwtSecret());
         const parsedPayload = jwtPayloadSchema.safeParse(payload);
 
         if (!parsedPayload.success) {
@@ -35,7 +43,11 @@ export async function gatewayGuard(
         next();
     } catch (error) {
         console.error("Error in routeGuard:", error);
-        res.status(401).json({ message: "Unauthorized: Invalid token" });
+        const message =
+            error instanceof Error && error.message.includes("JWT_SECRET")
+                ? "Unauthorized: auth configuration error"
+                : "Unauthorized: Invalid token";
+        res.status(401).json({ message });
         return;
     }
 }
