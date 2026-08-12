@@ -2,9 +2,9 @@
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
-🏗️ A comprehensive microservice event-driven architecture built with Nx monorepo, exploring CQRS patterns and microservice design principles.
+A comprehensive microservice event-driven architecture built with Nx monorepo, exploring CQRS patterns and microservice design principles.
 
-## 📦 Project Overview
+## Project Overview
 
 StyleSync is a production-ready microservices application demonstrating modern distributed architecture patterns:
 
@@ -31,7 +31,7 @@ StyleSync is a production-ready microservices application demonstrating modern d
   - `@stylesync/types` - TypeScript type definitions
   - `@stylesync/utils` - Shared utility functions
 
-## �️ Tech Stack
+## Tech Stack
 
 - **Package Manager**: pnpm
 - **Monorepo Tool**: Nx
@@ -40,10 +40,10 @@ StyleSync is a production-ready microservices application demonstrating modern d
 - **Caching**: Redis
 - **Event Publishing**: Redis Streams
 - **API Gateway**: Custom API Gateway
-- **Architecture Pattern**: CQRS (Command Query Responsibility Segregation)
+- **Architecture Pattern**: EDA Microservices (Event Driven Architecture) - CQRS (Command Query Responsibility Segregation)
 - **Testing**: Vitest
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 # Install dependencies using pnpm
@@ -71,7 +71,7 @@ pnpm nx run-many -t lint test build --parallel=3
 pnpm nx graph
 ```
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 ### Event-Driven Microservices Pattern
 
@@ -95,9 +95,9 @@ This project implements a microservice architecture with event-driven communicat
         ┌────────────┼──────────────────┐
         │            │                  │
   ┌─────▼──────┐ ┌──▼─────────┐ ┌─────▼────────┐
-  │  Services  │ │  Redis     │ │  PostgreSQL  │
-  │ (Products) │ │  Streams   │ │  (Shared DB) │
-  │            │ │  (Events)  │ │              │
+  │  Services  │ │  Inngest   │ │  PostgreSQL  │
+  │ (Products) │ │  (Events)  │ │  (Shared DB) │
+  │            │ │            │ │              │
   └─────┬──────┘ └──────┬─────┘ └──────────────┘
         │               │
         │  Redis Cache  │
@@ -112,7 +112,7 @@ Separates read and write operations for scalability and clarity:
 - **Queries**: Read-only operations (Get, List, Search)
 - **Events**: Published via Redis Streams for asynchronous communication
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── apps/
@@ -140,7 +140,7 @@ Separates read and write operations for scalability and clarity:
 └── eslint.config.mjs             - ESLint configuration
 ```
 
-## 📚 Useful Commands
+## Useful Commands
 
 ```bash
 # Workspace exploration
@@ -165,7 +165,7 @@ pnpm nx affected -t build                      # Build only affected projects
 pnpm nx affected -t test                       # Test only affected projects
 ```
 
-## 🎯 Generating New Code
+## Generating New Code
 
 ### Generate a new React library:
 
@@ -185,7 +185,7 @@ pnpm nx g @nx/node:lib my-lib --directory=libs/api
 pnpm nx g @nx/react:component my-component --project=web
 ```
 
-## 🌟 Key Features
+## Key Features
 
 - **Event-Driven Architecture**: Services communicate asynchronously via Redis Streams
 - **CQRS Pattern**: Clear separation between command (write) and query (read) operations
@@ -195,7 +195,7 @@ pnpm nx g @nx/react:component my-component --project=web
 - **API Gateway**: Custom gateway handles routing and cross-cutting concerns
 - **Monorepo Structure**: Manage multiple applications and services in a single repository
 
-## 📖 Learning Resources
+## Learning Resources
 
 - [Nx Documentation](https://nx.dev)
 - [Microservices Architecture](https://martinfowler.com/microservices/)
@@ -204,7 +204,7 @@ pnpm nx g @nx/react:component my-component --project=web
 - [Redis Streams](https://redis.io/docs/latest/develop/data-types/streams/)
 - [PostgreSQL Documentation](https://www.postgresql.org/docs/)
 
-## 💡 Development Notes
+## Development Notes
 
 This project serves as a learning ground for understanding:
 - Microservice architecture patterns
@@ -213,6 +213,6 @@ This project serves as a learning ground for understanding:
 - Monorepo management with Nx
 - Distributed system design principles
 
-## 📝 License
+## License
 
 [Add your license here]
