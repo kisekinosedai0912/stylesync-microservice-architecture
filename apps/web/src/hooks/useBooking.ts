@@ -11,6 +11,12 @@ export function useBooking() {
                 queryKey: ["user-booking"],
             });
         },
+        onError: (error) => {
+            console.error(
+                "An error occurred while processing your booking ",
+                error,
+            );
+        },
     });
 
     return { useAppointmentBook };

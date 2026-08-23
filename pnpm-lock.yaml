@@ -311,6 +311,27 @@ importers:
 
   apps/booking-service:
     dependencies:
+      '@stylesync/api':
+        specifier: workspace:*
+        version: link:../../libs/shared/api
+      '@stylesync/db':
+        specifier: workspace:*
+        version: link:../../libs/shared/storage/db
+      '@stylesync/middleware':
+        specifier: workspace:*
+        version: link:../../libs/middleware
+      '@stylesync/types':
+        specifier: workspace:*
+        version: link:../../libs/shared/types
+      '@stylesync/utils':
+        specifier: workspace:*
+        version: link:../../libs/shared/utils
+      axios:
+        specifier: ^1.19.0
+        version: 1.19.0
+      cookie-parser:
+        specifier: ^1.4.7
+        version: 1.4.7
       express:
         specifier: ^4.21.2
         version: 4.22.2
