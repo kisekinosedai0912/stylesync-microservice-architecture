@@ -68,9 +68,11 @@ export const bookings = pgTable(
     {
         id: pk(),
         refCode: varchar("reference_code", { length: 255 }).unique().notNull(),
-        customerId: uuid("customer_id").references(() => customer.id, {
-            onDelete: "cascade",
-        }),
+        customerId: uuid("customer_id")
+            .notNull()
+            .references(() => customer.id, {
+                onDelete: "cascade",
+            }),
         // soft ref -> users (auth-service); name snapshotted for history
         staffId: uuid("staff_id"),
         staffName: varchar("staff_name", { length: 255 }),

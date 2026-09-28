@@ -1,24 +1,23 @@
 import { z } from "zod";
 
 export const bookingSchema = z.object({
-    serviceId: z
-        .string()
-        .nonempty("service must be within the list of services, service id"),
-    selectedTime: z
-        .string()
-        .nonempty("user must have a selected time of booking"),
-    selectedDate: z
-        .string()
-        .nonempty("user must have a selected date of booking"),
-    customerName: z
-        .string()
-        .nonempty("To create a booking, user must provide his/her name."),
-    phoneNum: z.string(),
-    email: z.string(),
-    notes: z.string(),
+    serviceId: z.string().uuid("Invalid service ID"),
+    selectedTime: z.string().trim().min(1, "Booking time is required"),
+    selectedDate: z.string().trim().min(1, "Booking date is required"),
+    customerName: z.string().trim().min(1, "Customer name is required"),
+    phoneNum: z.string().trim().min(1, "Phone number cannot be empty"),
+    email: z.string().trim().email("Invalid email address"),
+    notes: z.string().trim(),
 });
 
-export const updateBookingSchema = bookingSchema.partial();
+export const updateBookingSchema = bookingSchema
+    .partial()
+    .refine(
+        (data) => Object.values(data).some((value) => value !== undefined),
+        {
+            message: "At least one field must be provided.",
+        },
+    );
 
 export type Booking = z.infer<typeof bookingSchema>;
 export type BookingUpdate = z.infer<typeof updateBookingSchema>;

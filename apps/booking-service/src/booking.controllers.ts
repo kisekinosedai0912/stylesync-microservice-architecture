@@ -1,9 +1,9 @@
 import { bookingSchema, updateBookingSchema } from "./booking.types";
 import { AppError, asyncHandler } from "@stylesync/middleware";
-import type { Request, Response, NextFunction, RequestHandler } from "express";
 import { customerBookings } from "../services/booking.services";
 import { created } from "../../../libs/shared/api";
 import { ok } from "assert";
+import type { Request, Response, NextFunction, RequestHandler } from "express";
 
 export const createBooking: RequestHandler = asyncHandler(
     async (req: Request, res: Response, next: NextFunction) => {
@@ -19,16 +19,18 @@ export const createBooking: RequestHandler = asyncHandler(
     },
 );
 
-// export const updateBooking: RequestHandler = asyncHandler(
-//     async (req: Request, res: Response, next: NextFunction) => {
-//         const updateBookingPayload = updateBookingSchema.safeParse(req.body);
-//         if (!updateBookingPayload.success) {
-//             throw new AppError(400, updateBookingPayload.error.message);
-//         }
+export const updateBooking: RequestHandler = asyncHandler(
+    async (req: Request, res: Response, next: NextFunction) => {
+        const { id: bookingId } = req.params;
+        const updateBookingPayload = updateBookingSchema.safeParse(req.body);
+        if (!updateBookingPayload.success) {
+            throw new AppError(400, updateBookingPayload.error.message);
+        }
 
-//         const updateData = await customerBookings.updateAppointment(
-//             updateBookingPayload.data,
-//         );
-//         return ok(res, "Appointment updated successfully", updateData);
-//     },
-// );
+        const updateData = await customerBookings.updateAppointment(
+            bookingId,
+            updateBookingPayload.data,
+        );
+        return ok(res, "Appointment updated successfully", updateData);
+    },
+);
