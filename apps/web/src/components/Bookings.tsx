@@ -5,7 +5,7 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select";
+} from "@stylesync/ui/components/select";
 import type { FormType } from "@/utils/types/forms";
 
 const fieldClassName =

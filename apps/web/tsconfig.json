@@ -1,18 +1,19 @@
 {
-	"compilerOptions": {
-		"paths": {
-			"@/*": ["./src/*"]
-		}
-	},
-	"files": [],
-	"include": [],
-	"references": [
-		{
-		"path": "./tsconfig.app.json"
-		},
-		{
-		"path": "./tsconfig.spec.json"
-		}
-	],
-	"extends": "../../tsconfig.base.json"
+    "compilerOptions": {
+        "paths": {
+            "@/*": ["./src/*"],
+            "@stylesync/api": ["../../libs/shared/api/index.ts"]
+        }
+    },
+    "files": [],
+    "include": [],
+    "references": [
+        {
+            "path": "./tsconfig.app.json"
+        },
+        {
+            "path": "./tsconfig.spec.json"
+        }
+    ],
+    "extends": "../../tsconfig.base.json"
 }

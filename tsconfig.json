@@ -23,6 +23,18 @@
       },
       {
         "path": "./libs/shared/utils"
+      },
+      {
+        "path": "./libs/middleware"
+      },
+      {
+        "path": "./libs/shared/api"
+      },
+      {
+        "path": "./libs/shared/storage/db"
+      },
+      {
+        "path": "./libs/shadcn/ui"
       }
     ]
 }

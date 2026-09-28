@@ -1,0 +1,29 @@
+{
+  "name": "@stylesync/api",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./index.ts",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./index.ts",
+      "default": "./index.ts"
+    },
+    "./response": {
+      "types": "./dist/response.d.ts",
+      "import": "./response.ts",
+      "default": "./response.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "axios": "^1.19.0",
+    "express": "^4.21.2"
+  },
+  "nx": {
+    "projectType": "library",
+    "tags": ["scope:shared", "type:util"]
+  }
+}

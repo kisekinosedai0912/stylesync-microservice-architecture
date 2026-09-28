@@ -1,18 +1,16 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "composite": false,
-    "declarationMap": false,
-    "emitDeclarationOnly": false,
-    "noEmit": true,
-    "types": ["node"]
-  },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "references": [
-    {
-      "path": "../../libs/shared/utils"
-    }
-  ]
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "composite": false,
+        "declarationMap": false,
+        "emitDeclarationOnly": false,
+        "noEmit": true,
+        "types": ["node"]
+    },
+    "include": ["src/**/*.ts", "../../libs/shared/express.d.ts"],
+    "references": [
+        {
+            "path": "../../libs/shared/utils"
+        }
+    ]
 }

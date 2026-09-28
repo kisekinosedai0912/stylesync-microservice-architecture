@@ -1,7 +1,7 @@
 import { memo } from "react";
 
-import { Badge } from "../components/ui/badge";
-import { Button } from "../components/ui/button";
+import { Badge } from "@stylesync/ui/components/badge";
+import { Button } from "@stylesync/ui/components/button";
 import {
     Card,
     CardAction,
@@ -9,7 +9,7 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
+} from "@stylesync/ui/components/card";
 
 type FeaturedData = {
     ctaText: string;

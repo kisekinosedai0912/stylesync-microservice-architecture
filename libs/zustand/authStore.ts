@@ -3,8 +3,8 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 type User = {
     id: string;
-    fullname: string;
-    email: string;
+    fullname?: string;
+    email?: string;
     role: string;
 };
 
